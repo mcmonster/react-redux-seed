@@ -1,0 +1,25 @@
+image: node
+
+cache:
+  paths:
+  - node_modules/
+
+before_script:
+  - npm install
+
+build:
+  stage: build
+  script:
+    - npm run build
+
+test:
+  stage: test
+  script:
+    - npm run test-once
+
+deploy:
+  stage: deploy
+  only:
+    - master
+  script:
+    - npm run deploy
